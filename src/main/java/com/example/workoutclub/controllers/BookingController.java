@@ -2,11 +2,10 @@ package com.example.workoutclub.controllers;
 
 import com.example.workoutclub.models.Booking;
 import com.example.workoutclub.services.BookingService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.time.LocalDate;
-import java.util.List;
 
 /**
  * Controller to handle APIs related to booking operations.
@@ -14,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/bookings")
 public class BookingController {
+    @Autowired
     private final BookingService bookingService;
 
     public BookingController(BookingService bookingService) {

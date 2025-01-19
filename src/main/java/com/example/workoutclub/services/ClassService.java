@@ -2,6 +2,8 @@ package com.example.workoutclub.services;
 
 import com.example.workoutclub.models.ClassDetails;
 import com.example.workoutclub.utils.ResponseFormatter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -13,10 +15,14 @@ import java.util.stream.Collectors;
 /**
  * Service to manage class-related operations.
  */
+@Service
 public class ClassService {
     private final ConcurrentMap<String, List<ClassDetails>> classes = new ConcurrentHashMap<>();
-    private final ResponseFormatter responseFormatter = new ResponseFormatter();
-
+    private final ResponseFormatter responseFormatter;
+    @Autowired
+    public ClassService(ResponseFormatter responseFormatter) {
+        this.responseFormatter = responseFormatter;
+    }
     /**
      * Adds a new class to the system.
      *

@@ -2,6 +2,7 @@ package com.example.workoutclub.services;
 
 import com.example.workoutclub.models.Booking;
 import com.example.workoutclub.utils.ResponseFormatter;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -11,9 +12,14 @@ import java.util.stream.Collectors;
 /**
  * Service to manage booking-related operations.
  */
+@Service
 public class BookingService {
     private final List<Booking> bookings = new ArrayList<>();
-    private final ResponseFormatter responseFormatter = new ResponseFormatter();
+    private final ResponseFormatter responseFormatter;
+
+    public BookingService( ResponseFormatter responseFormatter) {
+        this.responseFormatter = responseFormatter;
+    }
 
     /**
      * Adds a new booking to the system.

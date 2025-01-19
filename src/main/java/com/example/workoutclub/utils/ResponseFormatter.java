@@ -4,10 +4,12 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import org.springframework.stereotype.Component;
 
 /**
  * Utility class to format responses for API operations.
  */
+@Component
 public class ResponseFormatter {
     private final ObjectMapper objectMapper;
 
@@ -51,29 +53,8 @@ public class ResponseFormatter {
     }
 
     /**
-     * Inner class to represent the structure of a response.
-     */
-    private static class Response {
-        private String status;
-        private String message;
-        private Object data;
-
-        public Response(String status, String message, Object data) {
-            this.status = status;
-            this.message = message;
-            this.data = data;
-        }
-
-        public String getStatus() {
-            return status;
-        }
-
-        public String getMessage() {
-            return message;
-        }
-
-        public Object getData() {
-            return data;
-        }
+         * Inner class to represent the structure of a response.
+         */
+        private record Response(String status, String message, Object data) {
     }
 }
